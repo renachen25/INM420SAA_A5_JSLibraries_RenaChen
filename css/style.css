@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+/* Navbar */
+header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    color: #ffffff;
+
+}
+
+.logo-img {
+    width: 60px;
+    border-radius: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #735645;
+    font-size: 16px;
+}
+
+/* Hero */
+.hero {
+    height: 70vh;
+    background-image: url("../assets/images/Machupicchu.jpeg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-title {
+    font-family: "agbalumo";
+    font-size: 64px;
+    margin-bottom: 10px;
+}
+
+.cta {
+    margin-top: 20px;
+    padding: 14px 28px;
+    border: none;
+    background: #d96b43;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* General Section*/
+.section {
+    padding: 60px 60px;
+}
+
+.section h2 {
+    color: #735448;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* Destination Section */
+.destination-card {
+    background: #735645;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.destination-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.destination-card h3 {
+    font-family: "Gill Sans";
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* Map Section */
+.map-section {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+#peru-map {
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.map-text h2 {
+    font-size: px;
+    margin-bottom: 16px;
+}
+
+.map-text p {
+    color: #5b5248;
+    max-width: 420px;
+}
+
+@media (max-width: 900px) {
+    .map-section {
+        grid-template-columns: 1fr;
+    }
+
+    #peru-map {
+        height: 380px;
+    }
+}
+
+/* Experience Section */
+.dark {
+    background: #735645;
+    color: #f8f2ea;
+}
+
+#experiences {
+    padding: 100px 80px;
+}
+
+#experiences h2 {
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.experience {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px #0000002e;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+.experience img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.experience h3 {
+    font-family: "Gill Sans";
+    font-size: 24px;
+    margin: 20px 20px 10px;
+    color: #ffffff;
+}
+
+.experience p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 20px 24px;
+    color: rgba(255, 245, 232, 0.88);
+}
+
+#experience-tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: max-content;
+    max-width: 260px;
+    padding: 12px 14px;
+    background: #f4e7d8;
+    color: #2f241d;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+}
+
+#experience-tooltip[data-show] {
+    display: block;
+}
+
+@media (max-width: 1100px) {
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    #experiences {
+        padding: 80px 24px;
+    }
+
+    #experiences h2 {
+        font-size: 38px;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience img {
+        height: 220px;
+    }
+}
+
+/* Plan Section */
+#plan h2 {
+    color: #4b4747;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.step {
+    background: #df785f;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.step h3 {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background: #735645;
+    color: white;
+    text-align: center;
+    padding: 2px;
+    border-radius: 10px;
+}
