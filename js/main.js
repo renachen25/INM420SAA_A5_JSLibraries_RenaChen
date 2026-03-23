@@ -1,6 +1,25 @@
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Initialize Glide FIRST so its cloned slides are created before GSAP
+  // sets any inline opacity: 0 on .destination-card elements.
+  new Glide(".glide", {
+    type: "carousel",
+    perView: 3,
+    gap: 24,
+    autoplay: 2000,
+    hoverpause: true,
+    animationDuration: 800,
+    breakpoints: {
+      1024: {
+        perView: 2
+      },
+      768: {
+        perView: 1
+      }
+    }
+  }).mount();
+
   const fadeUp = {
     opacity: 0,
     ease: "power3.out"
@@ -45,7 +64,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  gsap.utils.toArray(".destination-card").forEach((card, index) => {
+  // Exclude Glide's cloned slides — they must stay at opacity: 1 for the seamless loop
+  gsap.utils.toArray(".destination-card:not(.glide__slide--clone)").forEach((card, index) => {
     gsap.from(card, {
       ...fadeUp,
       scrollTrigger: card,
@@ -75,27 +95,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-// Top Destinations - Glide Autoplay Carousel
-window.addEventListener("DOMContentLoaded", () => {
-    new Glide(".glide", {
-      type: "carousel",
-      perView: 3,
-      gap: 24,
-      autoplay: 2500,
-      hoverpause: true,
-      rewind: true,
-      animationDuration: 800,
-      breakpoints: {
-        1024: {
-          perView: 2
-        },
-        768: {
-          perView: 1
-        }
-      }
-    }).mount();
-  });
 
 //   Map
 window.addEventListener("DOMContentLoaded", () => {
