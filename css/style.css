@@ -1,3 +1,12 @@
+/* ===================================
+   BASE — MOBILE-FIRST
+   =================================== */
+
+/* Offset anchor scroll so sticky navbar never covers section titles */
+html {
+    scroll-padding-top: 80px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -9,29 +18,83 @@ header {
     width: 100%;
     background: #ffffff;
     border-bottom: 1px solid white;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 60px;
+    padding: 15px 20px;
     color: #ffffff;
-
 }
 
 .logo-img {
-    width: 60px;
+    width: 50px;
     border-radius: 10px;
 }
 
+/* Hamburger — visible on mobile only */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background: #735645;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* Nav links — slide-down menu on mobile */
 .nav-links {
     list-style: none;
-    display: flex;
-    gap: 40px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links.open {
+    max-height: 300px;
+}
+
+.nav-links li {
+    border-top: 1px solid #f0e8e0;
 }
 
 .nav-links a {
+    display: block;
+    padding: 14px 20px;
     text-decoration: none;
     color: #735645;
     font-size: 16px;
@@ -39,25 +102,26 @@ header {
 
 /* Hero */
 .hero {
-    height: 70vh;
+    min-height: 60vh;
     background-image: url("../assets/images/Machupicchu.jpeg");
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    padding-left: 80px;
+    padding: 40px 24px;
     color: #ffffff;
-    border-radius: 20px;
+    border-radius: 12px;
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width: 100%;
 }
 
 .hero-title {
     font-family: "agbalumo";
-    font-size: 64px;
+    font-size: 40px;
     margin-bottom: 10px;
+    color: #4c2517;
 }
 
 .cta {
@@ -71,15 +135,15 @@ header {
     border-radius: 10px;
 }
 
-/* General Section*/
+/* General Section */
 .section {
-    padding: 60px 60px;
+    padding: 40px 20px;
 }
 
 .section h2 {
     color: #735448;
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size: 28px;
+    margin-bottom: 30px;
 }
 
 /* Destination Section */
@@ -92,50 +156,34 @@ header {
 
 .destination-card img {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
 }
 
 .destination-card h3 {
     font-family: "Gill Sans";
-    padding: 20px;
-    font-size: 30px;
+    padding: 16px;
+    font-size: 24px;
 }
 
 /* Map Section */
 .map-section {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 40px;
+    grid-template-columns: 1fr;
+    gap: 24px;
     align-items: center;
 }
 
 #peru-map {
     width: 100%;
-    height: 500px;
+    height: 300px;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
-.map-text h2 {
-    font-size: px;
-    margin-bottom: 16px;
-}
-
 .map-text p {
     color: #5b5248;
-    max-width: 420px;
-}
-
-@media (max-width: 900px) {
-    .map-section {
-        grid-template-columns: 1fr;
-    }
-
-    #peru-map {
-        height: 380px;
-    }
 }
 
 /* Experience Section */
@@ -145,18 +193,19 @@ header {
 }
 
 #experiences {
-    padding: 100px 80px;
+    padding: 40px 20px;
 }
 
 #experiences h2 {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     color: #ffffff;
+    font-size: 28px;
 }
 
 .experience-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .experience {
@@ -175,22 +224,22 @@ header {
 
 .experience img {
     width: 100%;
-    height: 260px;
+    height: 220px;
     object-fit: cover;
     display: block;
 }
 
 .experience h3 {
     font-family: "Gill Sans";
-    font-size: 24px;
-    margin: 20px 20px 10px;
+    font-size: 22px;
+    margin: 16px 16px 8px;
     color: #ffffff;
 }
 
 .experience p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
-    margin: 0 20px 24px;
+    margin: 0 16px 20px;
     color: rgba(255, 245, 232, 0.88);
 }
 
@@ -216,30 +265,6 @@ header {
     display: block;
 }
 
-@media (max-width: 1100px) {
-    .experience-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-    #experiences {
-        padding: 80px 24px;
-    }
-
-    #experiences h2 {
-        font-size: 38px;
-    }
-
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .experience img {
-        height: 220px;
-    }
-}
-
 /* Plan Section */
 #plan h2 {
     color: #4b4747;
@@ -247,14 +272,14 @@ header {
 
 .steps {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .step {
     background: #df785f;
     color: #ffffff;
-    padding: 30px;
+    padding: 24px;
     border-radius: 8px;
 }
 
@@ -267,6 +292,204 @@ footer {
     background: #735645;
     color: white;
     text-align: center;
-    padding: 2px;
+    padding: 16px;
     border-radius: 10px;
+}
+
+/* ===================================
+   TABLET — min-width: 768px
+   =================================== */
+
+@media (min-width: 768px) {
+    .navbar {
+        padding: 15px 40px;
+    }
+
+    /* Hide hamburger, show inline nav */
+    .hamburger {
+        display: none;
+    }
+
+    .nav-links {
+        position: static;
+        flex-direction: row;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        gap: 30px;
+        background: none;
+        display: flex;
+    }
+
+    .nav-links li {
+        border-top: none;
+    }
+
+    .nav-links a {
+        padding: 0;
+    }
+
+    .hero {
+        min-height: 65vh;
+        padding: 60px 60px;
+        border-radius: 16px;
+    }
+
+    .hero-title {
+        font-size: 52px;
+    }
+
+    .hero-content {
+        max-width: 500px;
+    }
+
+    .section {
+        padding: 50px 40px;
+    }
+
+    .section h2 {
+        font-size: 32px;
+        margin-bottom: 36px;
+    }
+
+    .destination-card img {
+        height: 230px;
+    }
+
+    .map-section {
+        gap: 32px;
+    }
+
+    #peru-map {
+        height: 380px;
+    }
+
+    #experiences {
+        padding: 60px 40px;
+    }
+
+    #experiences h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .experience img {
+        height: 240px;
+    }
+
+    .steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .step {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+/* ===================================
+   DESKTOP — min-width: 1024px
+   =================================== */
+
+@media (min-width: 1024px) {
+    .navbar {
+        padding: 15px 60px;
+    }
+
+    .logo-img {
+        width: 60px;
+    }
+
+    .nav-links {
+        gap: 40px;
+    }
+
+    .hero {
+        height: 70vh;
+        min-height: unset;
+        padding: 0 0 0 80px;
+        border-radius: 20px;
+    }
+
+    .hero-title {
+        font-size: 64px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    .section {
+        padding: 60px 60px;
+    }
+
+    .section h2 {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .destination-card img {
+        height: 250px;
+    }
+
+    .destination-card h3 {
+        padding: 20px;
+        font-size: 30px;
+    }
+
+    .map-section {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 40px;
+    }
+
+    .map-text p {
+        max-width: 420px;
+    }
+
+    #peru-map {
+        height: 500px;
+    }
+
+    #experiences {
+        padding: 100px 80px;
+    }
+
+    #experiences h2 {
+        font-size: 36px;
+        margin-bottom: 50px;
+    }
+
+    .experience-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+    }
+
+    .experience h3 {
+        font-size: 24px;
+        margin: 20px 20px 10px;
+    }
+
+    .experience p {
+        font-size: 16px;
+        margin: 0 20px 24px;
+    }
+
+    .experience img {
+        height: 260px;
+    }
+
+    .steps {
+        flex-wrap: nowrap;
+        gap: 40px;
+    }
+
+    .step {
+        flex: 1;
+        padding: 30px;
+    }
 }

@@ -201,3 +201,23 @@ experiences.forEach((card) => {
   });
 });
 
+// Hamburger menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu when a nav link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('open');
+    });
+  });
+}
+
